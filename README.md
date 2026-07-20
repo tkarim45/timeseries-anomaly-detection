@@ -1,8 +1,8 @@
 # timeseries-anomaly-detection
 
 A time-series anomaly detection **bench**, not a plotting demo. It generates a synthetic
-series with a **known anomaly ground truth** — point spikes, sustained level shifts, and
-variance bursts injected at recorded indices — then runs seven detectors and scores each on
+series with a **known anomaly ground truth**, point spikes, sustained level shifts, and
+variance bursts injected at recorded indices, then runs seven detectors and scores each on
 precision / recall / F1 and **point-adjusted F1**.
 
 ```bash
@@ -42,7 +42,7 @@ On a series with a daily + weekly cycle, the textbook rolling detectors **collap
 
 - raw **IQR → adjusted-F1 0.000** (the seasonal swing widens the rolling fences so far that
   nothing trips them),
-- raw **rolling z-score → 0.024** (same cause — the rolling std is dominated by the season, not the noise).
+- raw **rolling z-score → 0.024** (same cause, the rolling std is dominated by the season, not the noise).
 
 Strip the seasonality with STL first and run the *exact same detectors* on the remainder:
 
@@ -52,7 +52,7 @@ Strip the seasonality with STL first and run the *exact same detectors* on the r
 That ~0.95 jump is the entire lesson of practical anomaly detection: **a simple detector on a
 properly deseasonalized signal beats a fancy detector on the raw signal.** `isolation_forest`
 (0.741) and even `stl_residual`'s own remainder thresholding (0.716) lose to a deseasonalized
-IQR. `stl_residual` gets perfect precision but low recall — it only fires on the sharpest
+IQR. `stl_residual` gets perfect precision but low recall, it only fires on the sharpest
 remainders.
 
 ## Point-adjusted F1
