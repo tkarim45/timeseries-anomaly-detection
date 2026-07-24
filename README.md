@@ -11,6 +11,13 @@ tsanomaly --json
 tsanomaly --n 5000 --seed 1
 ```
 
+
+## Architecture
+
+![architecture](docs/assets/architecture.png)
+
+*Interactive/exportable version: [`docs/assets/architecture.html`](docs/assets/architecture.html).*
+
 ## Detectors
 
 | detector | idea |
